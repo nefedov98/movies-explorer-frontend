@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "deploy": "npm run build && scp -r ./build/* admin@51.250.7.253:/home/diplom/movies-explorer-frontend"
   },
   "eslintConfig": {
     "extends": [
