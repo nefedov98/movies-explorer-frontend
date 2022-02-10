@@ -7,7 +7,7 @@ function SavedMovies({del}) {
     return (
         <div className="saved-movies">
             <SearchForm />
-            <MoviesCardList del/>
+            <MoviesCardList del Saved/>
         </div>
     );
 }

@@ -10,7 +10,7 @@ function MoviesCard({del}) {
           <h4 className="movie-card__title">Название</h4>
           <p className="movie-card__duration">1 45</p>
         </div>
-        <div className={del ? 'movie-card__delete' : 'movie-card__no-save'}></div>
+        <button className={del ? 'movie-card__delete' : 'movie-card__no-save'}></button>
       </div>
       <a className="movie-card__link" href="https://www.calend.ru/img/content/i1/1725.jpg" target="_blank" rel="noopener noreferrer">
         <img

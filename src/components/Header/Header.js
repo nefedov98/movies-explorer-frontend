@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import MainLogoLink from '../MainLogoLink/MainLogoLink';
@@ -6,7 +6,19 @@ import Navigation from '../Navigation/Navigation';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Header({ isLoggedIn }) {
-    const isMobile = false
+    const [width, setWidth] = useState(window.innerWidth);
+
+
+    const updateWidth = () => {
+        setWidth(window.innerWidth);
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', updateWidth);
+        return () => window.removeEventListener('resize', updateWidth);
+    });
+
+    const isMobile = width <= 768;
     const isOpen = false
     return (
         <header className="header">

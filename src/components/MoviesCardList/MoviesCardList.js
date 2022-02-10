@@ -2,7 +2,7 @@ import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
-function MoviesCardList({ del }) {
+function MoviesCardList({ del, Saved }) {
 
   return (
     <section className="movies-card-list">
@@ -35,9 +35,9 @@ function MoviesCardList({ del }) {
           <MoviesCard />
         </li>
       </ul>
-      <div className="load-more">
+      {!Saved && (<div className="load-more">
         <button className="load-more__more-btn" type="button" >Ещё</button>
-      </div>
+      </div>)}
     </section>
   );
 }
