@@ -1,22 +1,43 @@
 import React from 'react';
+import BookmarkBtn from '../ui/BookmarkBtn/BookmarkBtn';
+import BookmarkRemoveBtn from '../ui/BookmarkRemoveBtn/BookmarkRemoveBtn';
+import durationFormatter from '../../helpers/movieCardHelper';
 import './MoviesCard.css';
 
-function MoviesCard({del}) {
+function MoviesCard({
+  savedMovies, movie, onBookmarkClick, isMovieAdded,
+}) {
+  const {
+    nameRU, duration, trailer, image,
+  } = movie;
+
+  const isAdded = isMovieAdded(movie);
+
+  const handleBookmarkClick = (e) => {
+    e.preventDefault();
+    onBookmarkClick(movie, !isAdded);
+  };
+
+  const removeHandler = () => {
+    onBookmarkClick(movie, false);
+  };
 
   return (
     <div className="movie-card">
       <div className="movie-card__header">
         <div className="movie-card__meta-container">
-          <h4 className="movie-card__title">Название</h4>
-          <p className="movie-card__duration">1 45</p>
+          <h4 className="movie-card__title">{nameRU}</h4>
+          <p className="movie-card__duration">{durationFormatter(duration)}</p>
         </div>
-        <button className={del ? 'movie-card__delete' : 'movie-card__no-save'}></button>
+        {savedMovies
+          ? <BookmarkRemoveBtn onClick={removeHandler} />
+          : <BookmarkBtn isAdded={isAdded} onClick={handleBookmarkClick} />}
       </div>
-      <a className="movie-card__link" href="https://www.calend.ru/img/content/i1/1725.jpg" target="_blank" rel="noopener noreferrer">
+      <a className="movie-card__link" href={trailer} target="_blank" rel="noopener noreferrer">
         <img
           className="movie-card__image"
-          src="https://www.calend.ru/img/content/i1/1725.jpg"
-          alt={`Фотография к фильму название`}
+          src={image}
+          alt={`Фотография к фильму ${nameRU}`}
         />
       </a>
     </div>
@@ -24,3 +45,4 @@ function MoviesCard({del}) {
 }
 
 export default MoviesCard;
+

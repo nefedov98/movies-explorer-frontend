@@ -1,0 +1,15 @@
+.profile-btn {
+  width: 100px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  background-color: #202020;
+  background-image: url('../../../images/profile.svg');
+  background-position: top;
+  border: none;
+  border-radius: 20%;
+}
+
+.profile-btn:hover {
+  opacity: .6;
+}
