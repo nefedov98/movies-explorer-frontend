@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import SubmitBtn from '../ui/SubmitBtn/SubmitBtn';
 import './AuthForm.css';
+export const regExp = {
+    email: '^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'
+};
 
 function AuthForm({
     FormTypeLogin, onSubmit, formData, isSignUpError, isSignInError,
@@ -8,7 +11,7 @@ function AuthForm({
     const {
         values, handleChange, errors, isValid, resetForm,
     } = formData;
-
+    
     useEffect(() => {
         resetForm();
     }, [resetForm]);
@@ -50,6 +53,7 @@ function AuthForm({
                     onChange={handleChange}
                     value={values.email || ''}
                     autoComplete="off"
+                    pattern={ regExp.email }
                 />
             </label>
             <span className="auth-form__error">{errors.email}</span>

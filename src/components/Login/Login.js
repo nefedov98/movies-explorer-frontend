@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import AuthForm from '../AuthForm/AuthForm';
 import MainLogoLink from '../MainLogoLink/MainLogoLink';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 import './Login.css';
 
-function Login({ signInHandler, isSignInError }) {
+function Login({ signInHandler, isSignInError, loggedIn}) {
   const formWithValidation = useFormWithValidation();
   const { email, password } = formWithValidation.values;
 
@@ -14,9 +14,10 @@ function Login({ signInHandler, isSignInError }) {
     signInHandler(email, password);
     formWithValidation.resetForm();
   };
-
+  
   return (
-    <div className="login">
+    <div>
+      { !loggedIn ? (<div className="login">
       <MainLogoLink />
       <h2 className="login__title">Рады видеть!</h2>
       <AuthForm
@@ -29,6 +30,7 @@ function Login({ signInHandler, isSignInError }) {
         Ещё не зарегистрированы?
         <Link className="login__link" to="/signup">Регистрация</Link>
       </p>
+    </div>) : <Redirect to="./" />}
     </div>
   );
 }

@@ -5,7 +5,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => (
   <Route>
     {
       // eslint-disable-next-line react/jsx-props-no-spreading
-        () => (props.loggedIn === true ? <Component {...props} /> : <Redirect to="./signin" />)
+        () => (props.loggedIn === true ? <Component {...props} /> : <Redirect to="./" />)
       }
   </Route>
 );

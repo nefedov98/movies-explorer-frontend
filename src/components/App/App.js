@@ -34,7 +34,6 @@ function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [filterMovies, setFilterMovies] = React.useState([]);
   const [filterSavedMovies, setFilterSavedMovies] = React.useState([]);
-  console.log(filterMovies);
   const [query, setQuery] = React.useState('');
 
   const history = useHistory();
@@ -245,6 +244,7 @@ function App() {
   const removeFromBookmark = (movie) => {
     const movieId = savedMovies.find((item) => item.id === movie.id)._id;
     console.log(movie)
+    console.log(movieId)
     mainApi
       .removeBookmark(movieId)
       .then((res) => {
@@ -319,11 +319,11 @@ function App() {
             />
 
             <Route path="/signup">
-              <Register signUpHandler={signUpHandler} isSignUpError={isSignUpError} />
+              <Register signUpHandler={signUpHandler} isSignUpError={isSignUpError} loggedIn={loggedIn}/>
             </Route>
 
             <Route path="/signin">
-              <Login signInHandler={signInHandler} isSignInError={isSignInError} />
+              <Login signInHandler={signInHandler} isSignInError={isSignInError} loggedIn={loggedIn}/>
             </Route>
 
             <Route component={NotFound} />

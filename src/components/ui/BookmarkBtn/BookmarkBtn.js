@@ -2,6 +2,7 @@ import React from 'react';
 import './BookmarkBtn.css';
 
 function BookmarkBtn({ isAdded, onClick }) {
+
   return (
     <button
       className={!isAdded

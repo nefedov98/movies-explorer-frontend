@@ -10,7 +10,6 @@ function MoviesCard({
   const {
     nameRU, duration, trailer, image,
   } = movie;
-
   const isAdded = isMovieAdded(movie);
 
   const handleBookmarkClick = (e) => {

@@ -12,6 +12,12 @@ function SearchForm({ onFilterClick, onSearch, isLoading }) {
     resetForm();
   }, [resetForm]);
 
+  // React.useState(() => {
+  //   if(isLoading) {
+      
+  //   }
+  // });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!searchText) {
@@ -21,7 +27,6 @@ function SearchForm({ onFilterClick, onSearch, isLoading }) {
       }, 2000);
     } else {
       onSearch(searchText);
-      resetForm();
     }
   };
   return (
@@ -41,7 +46,7 @@ function SearchForm({ onFilterClick, onSearch, isLoading }) {
             disabled={isLoading}
           />
           {error && <span className="search-form__error">{error}</span>}
-          <button className="search-form__button" type="submit"></button>
+          <button className="search-form__button" type="submit" disabled={isLoading}></button>
           <div className="search-form__line"></div>
         </div>
         <div className="search-form__shorts-wrapper">

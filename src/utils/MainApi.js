@@ -78,6 +78,7 @@ class MainApi {
   }
 
   removeBookmark(movieId) {
+    console.log(movieId)
     return fetch(`${this._baseUrl}/movies/${movieId}`, {
       method: 'DELETE',
       headers: {
