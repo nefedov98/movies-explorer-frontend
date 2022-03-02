@@ -114,6 +114,7 @@ function App() {
 
     localStorage.removeItem('allMovies');
     localStorage.removeItem('savedMovies');
+    localStorage.removeItem('searchMovies');
     setAllMovies([]);
     setSavedMovies([]);
     setFilterMovies([]);
@@ -196,7 +197,15 @@ function App() {
       getSavedMovies();
     }
   }, []);
-
+  useEffect(() => {
+    const search = JSON.parse(localStorage.getItem('searchMovies'));
+    console.log(search)
+    if (search) {
+      setFilterMovies(search);
+    } else {
+      setFilterMovies([]);
+    }
+  }, []);
   useEffect(() => {
     if (loggedIn) {
       getAllMoviesData();
@@ -215,6 +224,7 @@ function App() {
       } else {
         setLoadingError('');
       }
+      localStorage.setItem('searchMovies', JSON.stringify(filterData));
       return filterData;
     }
     return [];
@@ -243,8 +253,7 @@ function App() {
 
   const removeFromBookmark = (movie) => {
     const movieId = savedMovies.find((item) => item.id === movie.id)._id;
-    console.log(movie)
-    console.log(movieId)
+    
     mainApi
       .removeBookmark(movieId)
       .then((res) => {
@@ -264,6 +273,11 @@ function App() {
     setFilterSavedMovies(searchFilter(savedMovies, query));
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
   }, [savedMovies]);
+
+  // useEffect(() => {
+  //   setFilterSavedMovies(searchFilter(savedMovies, query));
+  //   localStorage.setItem('searchMovies', JSON.stringify(savedMovies));
+  // }, [savedMovies]);
 
   return (
     <div className="App">

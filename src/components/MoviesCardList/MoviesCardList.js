@@ -50,6 +50,7 @@ function MoviesCardList({
 
   const renderMore = () => renderExtraRow();
 
+  console.log(movies)
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__list">

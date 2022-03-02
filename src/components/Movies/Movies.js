@@ -15,7 +15,7 @@ function Movies({
 
   const onFilterClick = () => {
     setFilterIsOn(!filterIsOn);
-  };
+  }
 
   return (
     <div className="movies">
